@@ -21,9 +21,9 @@ DIR_WORK=${HOME}/workdir
 # directory to store BLAST databse
 DIR_BLASTDB=${DIR_WORK}/blastdb
 # directory to store fasta file of the sequenced data
-DIR_FA=${WORK}/fa
+DIR_FA=${DIR_WORK}/fa
 # directory to store splited fa
-DIR_SPLITFA=${WOKR}/split_fa
+DIR_SPLITFA=${DIR_WORK}/split_fa
 
 cd ${DIR_WORK}
 
@@ -38,10 +38,12 @@ LAB=${LABs[$idx]}
 echo $(date) "Start"
 
 # 2000 lines and 1000 records each file
-split -l 2000 ${DIR_FA}/${LAB}.fa ${DIR_SPLITFA}/${LAB}.fa.split.
+split -l 2000 --additional-suffix .fa ${DIR_FA}/${LAB}.fa ${DIR_SPLITFA}/${LAB}.fa.split.
 
-for x in $(ls ${DIR_SPLITFA} | egrep "${LAB}.read1.unmap.fa.split"); do
-    mv ${DIR_SPLITFA}/${x} ${DIR_SPLITFA}/${x}.fa
-done
+# for FASTQ files
+# cat ${DIR_BAM}/${LAB}.Unmapped.fq | \
+#     paste - - - - | \
+#     awk -F "\t" '{print "> " $1; print $2;}' | tr -d "@" | \
+#     split -l 2000 --additional-suffix .fa - ${DIR_SPLITFA}/${LAB}.split.
 
 echo $(date) "End"

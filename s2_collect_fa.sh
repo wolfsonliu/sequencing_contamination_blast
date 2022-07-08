@@ -21,9 +21,9 @@ DIR_WORK=${HOME}/workdir
 # directory to store BLAST databse
 DIR_BLASTDB=${DIR_WORK}/blastdb
 # directory to store fasta file of the sequenced data
-DIR_FA=${DIR_WOKR}/fa
+DIR_FA=${DIR_WORK}/fa
 # directory to store splited fa
-DIR_SPLITFA=${DIR_WOKR}/split_fa
+DIR_SPLITFA=${DIR_WORK}/split_fa
 
 cd ${DIR_WORK}
 
